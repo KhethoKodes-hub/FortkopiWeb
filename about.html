@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fortkopi Print · About Us</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    :root {
+      --orange: #c85a14;
+      --orange-light: #e87030;
+      --orange-pale: #fbe8d6;
+      --black: #0a0a0a;
+      --off-white: #f8f4f0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--black);
+      background: var(--off-white);
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .display { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.04em; }
+    .mono { font-family: 'Space Mono', monospace; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(10,10,10,0.78);
+      backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid rgba(200,90,20,0.35);
+    }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      min-height: 70vh;
+      background:
+        linear-gradient(155deg, rgba(10,10,10,0.88) 0%, rgba(200,90,20,0.42) 52%, rgba(10,10,10,0.92) 100%),
+        url('./assets/hero2.png') center/cover no-repeat;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      position: relative; overflow: hidden;
+      padding-top: 68px;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23c85a14' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    /* ── GLASS ── */
+    .glass {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(20px) saturate(160%);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 20px;
+      transition: all 0.35s cubic-bezier(.22,.68,0,1.2);
+    }
+    .glass:hover {
+      background: rgba(255,255,255,0.18);
+      border-color: rgba(200,90,20,0.55);
+      transform: translateY(-5px);
+      box-shadow: 0 28px 55px -15px rgba(0,0,0,0.55), 0 0 0 1px rgba(200,90,20,0.3);
+    }
+
+    .glass-light {
+      background: rgba(255,255,255,0.68);
+      backdrop-filter: blur(24px) saturate(180%);
+      border: 1px solid rgba(200,90,20,0.15);
+      border-radius: 22px;
+      transition: all 0.35s cubic-bezier(.22,.68,0,1.2);
+    }
+    .glass-light:hover {
+      background: rgba(255,255,255,0.9);
+      border-color: var(--orange);
+      transform: translateY(-5px);
+      box-shadow: 0 24px 50px -12px rgba(0,0,0,0.16), 0 0 0 1px rgba(200,90,20,0.22);
+    }
+
+    /* ── SECTION LABEL ── */
+    .section-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--orange); margin-bottom: 12px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section-label::before { content: ''; display: block; width: 28px; height: 2px; background: var(--orange); }
+
+    /* ── BUTTONS ── */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: linear-gradient(135deg, var(--orange), #8a3a08);
+      color: #fff; font-weight: 700; padding: 13px 30px;
+      border-radius: 100px; font-size: 0.9rem; letter-spacing: 0.04em;
+      box-shadow: 0 8px 24px rgba(200,90,20,0.4);
+      transition: all 0.3s ease; text-decoration: none;
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 16px 40px rgba(200,90,20,0.5);
+    }
+
+    /* ── VM CARDS ── */
+    .vm-card {
+      position: relative; overflow: hidden;
+      border-radius: 24px; padding: 40px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(16px);
+      transition: all 0.35s ease;
+    }
+    .vm-card::after {
+      content: ''; position: absolute;
+      bottom: -40px; right: -40px;
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(200,90,20,0.18), transparent 70%);
+      transition: 0.4s;
+    }
+    .vm-card:hover::after { transform: scale(1.6); }
+    .vm-card:hover { border-color: rgba(200,90,20,0.4); transform: translateY(-4px); }
+
+    /* ── EDGE CARDS ── */
+    .edge-card {
+      position: relative; overflow: hidden;
+      border-radius: 22px;
+      transition: all 0.35s ease;
+    }
+    .edge-card .edge-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(200,90,20,0.92), rgba(10,10,10,0.96));
+      opacity: 0; transition: 0.35s;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 28px; text-align: center; border-radius: 22px;
+    }
+    .edge-card:hover .edge-overlay { opacity: 1; }
+    .edge-card:hover { transform: translateY(-5px); box-shadow: 0 24px 50px rgba(0,0,0,0.22); }
+
+    /* ── STAT STRIP ── */
+    .stat-strip {
+      background: linear-gradient(135deg, var(--black) 0%, #1a1a1a 50%, #2a1a0a 100%);
+      border-top: 2px solid var(--orange);
+      border-bottom: 2px solid var(--orange);
+    }
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem,5vw,4rem);
+      background: linear-gradient(135deg, var(--orange-light), #fff);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(36px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+    @keyframes pulse-ring {
+      0%,100%{box-shadow:0 0 0 0 rgba(200,90,20,0.4)}
+      50%{box-shadow:0 0 0 10px rgba(200,90,20,0)}
+    }
+
+    .anim-fade-up { animation: fadeUp 0.8s ease both; }
+    .anim-d1 { animation-delay: 0.1s; }
+    .anim-d2 { animation-delay: 0.25s; }
+    .anim-d3 { animation-delay: 0.4s; }
+    .anim-float { animation: float 5s ease-in-out infinite; }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(200,90,20,0.14);
+      border: 1px solid rgba(200,90,20,0.45);
+      backdrop-filter: blur(10px);
+      color: #e8a070;
+      padding: 5px 16px; border-radius: 100px;
+      font-family: 'Space Mono', monospace; font-size: 0.68rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .scroll-dot {
+      width: 8px; height: 8px; background: var(--orange);
+      border-radius: 50%; animation: pulse-ring 2s ease-in-out infinite;
+    }
+
+    .orange-pill {
+      background: linear-gradient(135deg, var(--orange), #8a3a08);
+      color: #fff; border-radius: 100px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 6px 18px; display: inline-block;
+      box-shadow: 0 6px 18px rgba(200,90,20,0.38);
+    }
+
+    .grad-line {
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--orange), var(--black), transparent);
+    }
+
+    .section-dark { background: linear-gradient(160deg, var(--black) 0%, #1c1008 60%, #0a0a0a 100%); }
+
+    /* breadcrumb */
+    .breadcrumb a {
+      font-family: 'Space Mono', monospace; font-size: 0.68rem;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s;
+    }
+    .breadcrumb a:hover { color: var(--orange-light); }
+    .breadcrumb span { color: rgba(255,255,255,0.25); margin: 0 8px; }
+
+    /* founder wrap */
+    .founder-wrap {
+      background:
+        linear-gradient(135deg, rgba(10,10,10,0.88) 0%, rgba(40,20,5,0.92) 50%, rgba(10,10,10,0.95) 100%),
+        url('https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1400&q=80') center/cover no-repeat;
+      border-radius: 32px; overflow: hidden;
+      border: 1px solid rgba(200,90,20,0.25);
+    }
+
+    /* timeline */
+    .timeline-item { position: relative; padding-left: 36px; }
+    .timeline-item::before {
+      content: ''; position: absolute; left: 0; top: 6px;
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--orange);
+      box-shadow: 0 0 0 3px rgba(200,90,20,0.2);
+    }
+    .timeline-item::after {
+      content: ''; position: absolute; left: 5px; top: 22px;
+      width: 2px; bottom: -20px;
+      background: linear-gradient(to bottom, var(--orange), transparent);
+    }
+    .timeline-item:last-child::after { display: none; }
+  </style>
+</head>
+<body>
+
+<!-- ░░ NAV ░░ -->
+<nav>
+  <div style="max-width:1280px;margin:auto;padding:0 24px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;height:68px;">
+      <div style="display:flex;align-items:center;gap:14px;">
+        <div style="width:40px;height:40px;background:linear-gradient(135deg,#c85a14,#8a3a08);border-radius:11px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(200,90,20,0.5);">
+          <span style="font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:#fff;">FP</span>
+        </div>
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:0.06em;color:#fff;">FORTKOPI <span style="color:#c85a14;">PRINT</span></span>
+      </div>
+      <div style="display:flex;align-items:center;gap:28px;">
+        <a href="index.html" style="color:rgba(255,255,255,0.55);font-size:0.85rem;font-weight:600;letter-spacing:0.06em;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#e87030'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">HOME</a>
+        <a href="#story" style="color:rgba(255,255,255,0.55);font-size:0.85rem;font-weight:600;letter-spacing:0.06em;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#e87030'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">SERVICES</a>
+        <a href="#founder" style="color:rgba(255,255,255,0.55);font-size:0.85rem;font-weight:600;letter-spacing:0.06em;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#e87030'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">ABOUT</a>
+        <a href="#" class="btn-primary" style="padding:9px 22px;font-size:0.8rem;">GET A QUOTE</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ░░ PAGE HERO ░░ -->
+<section class="page-hero">
+  <div style="max-width:1280px;margin:auto;padding:0 32px 64px;position:relative;z-index:2;">
+
+    <!-- breadcrumb -->
+    <div class="breadcrumb anim-fade-up" style="margin-bottom:32px;">
+      <a href="fortkopi-print.html">Home</a>
+      <span>/</span>
+      <a href="#" style="color:var(--orange-light);">About Us</a>
+    </div>
+
+    <div style="max-width:700px;">
+      <div class="anim-fade-up anim-d1" style="margin-bottom:20px;">
+        <span class="hero-badge"><span class="scroll-dot"></span> EST. 2020 · DANIELSKUIL, NORTHERN CAPE</span>
+      </div>
+      <h1 class="anim-fade-up anim-d2" style="font-size:clamp(4rem,9vw,8rem);line-height:0.9;color:#fff;margin-bottom:22px;">
+        OUR<br/><span style="background:linear-gradient(135deg,#e87030,#c85a14,#fff 80%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">STORY.</span>
+      </h1>
+      <p class="anim-fade-up anim-d3" style="font-size:1.1rem;color:rgba(255,255,255,0.68);max-width:520px;line-height:1.75;margin-bottom:36px;">
+        A locally rooted apparel decorating business building quality, community, and creative excellence — one print at a time.
+      </p>
+      <div class="anim-fade-up" style="animation-delay:0.55s;display:flex;gap:14px;flex-wrap:wrap;">
+        <a href="#story" class="btn-primary"><i class="fas fa-arrow-down"></i> READ OUR STORY</a>
+        <a href="fortkopi-print.html#services" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:#fff;font-weight:600;padding:12px 28px;border-radius:100px;font-size:0.9rem;border:2px solid rgba(255,255,255,0.3);transition:all 0.3s;text-decoration:none;" onmouseover="this.style.borderColor='var(--orange)';this.style.color='#e87030'" onmouseout="this.style.borderColor='rgba(255,255,255,0.3)';this.style.color='#fff'"><i class="fas fa-tshirt"></i> VIEW SERVICES</a>
+      </div>
+    </div>
+
+    <!-- floating stat chips -->
+    <div class="anim-fade-up" style="animation-delay:0.7s;display:flex;gap:14px;margin-top:56px;flex-wrap:wrap;">
+      <div class="glass" style="padding:16px 24px;border-radius:14px;text-align:center;min-width:120px;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:2rem;color:#e87030;line-height:1;">2020</div>
+        <div style="color:rgba(255,255,255,0.5);font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;margin-top:2px;">Founded</div>
+      </div>
+      <div class="glass" style="padding:16px 24px;border-radius:14px;text-align:center;min-width:120px;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:2rem;color:#e87030;line-height:1;">NC</div>
+        <div style="color:rgba(255,255,255,0.5);font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;margin-top:2px;">Northern Cape</div>
+      </div>
+      <div class="glass" style="padding:16px 24px;border-radius:14px;text-align:center;min-width:120px;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:2rem;color:#e87030;line-height:1;">5+</div>
+        <div style="color:rgba(255,255,255,0.5);font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;margin-top:2px;">Service Lines</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ░░ MARQUEE ░░ -->
+<div style="background:var(--orange);overflow:hidden;padding:13px 0;border-top:2px solid rgba(0,0,0,0.18);border-bottom:2px solid rgba(0,0,0,0.18);">
+  <div style="display:flex;gap:48px;animation:marquee 20s linear infinite;width:max-content;">
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.1em;color:rgba(0,0,0,0.65);white-space:nowrap;">✦ ABOUT FORTKOPI PRINT</span>
+    <span style="color:rgba(0,0,0,0.3);">·</span>
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.1em;color:rgba(0,0,0,0.65);white-space:nowrap;">DANIELSKUIL, NC</span>
+    <span style="color:rgba(0,0,0,0.3);">·</span>
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.1em;color:rgba(0,0,0,0.65);white-space:nowrap;">EST. 2020</span>
+    <span style="color:rgba(0,0,0,0.3);">·</span>
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.1em;color:rgba(0,0,0,0.65);white-space:nowrap;">QUALITY · ETHICS · COMMUNITY</span>
+    <span style="color:rgba(0,0,0,0.3);">·</span>
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.1em;color:rgba(0,0,0,0.65);white-space:nowrap;">ZF MGCAWU DISTRICT</span>
+    <span style="color:rgba(0,0,0,0.3);">·</span>
+    <!-- duplicate for loop -->
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.1em;color:rgba(0,0,0,0.65);white-space:nowrap;">✦ ABOUT FORTKOPI PRINT</span>
+    <span style="color:rgba(0,0,0,0.3);">·</span>
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.1em;color:rgba(0,0,0,0.65);white-space:nowrap;">DANIELSKUIL, NC</span>
+    <span style="color:rgba(0,0,0,0.3);">·</span>
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.1em;color:rgba(0,0,0,0.65);white-space:nowrap;">EST. 2020</span>
+    <span style="color:rgba(0,0,0,0.3);">·</span>
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.1em;color:rgba(0,0,0,0.65);white-space:nowrap;">QUALITY · ETHICS · COMMUNITY</span>
+    <span style="color:rgba(0,0,0,0.3);">·</span>
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.1em;color:rgba(0,0,0,0.65);white-space:nowrap;">ZF MGCAWU DISTRICT</span>
+    <span style="color:rgba(0,0,0,0.3);">·</span>
+  </div>
+</div>
+<style>
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+</style>
+
+
+<!-- ░░ WHO WE ARE ░░ -->
+<section id="story" style="padding:100px 0;background:var(--off-white);">
+  <div style="max-width:1280px;margin:auto;padding:0 32px;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;">
+
+      <!-- left: images -->
+      <div style="position:relative;height:560px;">
+        <div style="position:absolute;right:0;top:0;width:78%;height:360px;border-radius:26px;overflow:hidden;border:2px solid rgba(200,90,20,0.3);box-shadow:0 30px 60px rgba(0,0,0,0.14);">
+          <img src="assets/ab1.png" alt="Apparel Printing" style="width:100%;height:100%;object-fit:cover;"/>
+          <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(200,90,20,0.18),rgba(10,10,10,0.28));"></div>
+        </div>
+        <div style="position:absolute;left:0;bottom:0;width:55%;height:250px;border-radius:20px;overflow:hidden;border:2px solid rgba(200,90,20,0.4);box-shadow:0 20px 40px rgba(0,0,0,0.2);z-index:2;">
+          <img src="assets/ab2.png" alt="Community" style="width:100%;height:100%;object-fit:cover;"/>
+        </div>
+        <!-- floating pill badge -->
+        <div class="glass-light" style="position:absolute;right:-16px;bottom:70px;z-index:3;padding:14px 18px;border-radius:14px;min-width:130px;text-align:center;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--orange);line-height:1;">NC</div>
+          <div style="font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:#777;">Northern Cape</div>
+        </div>
+      </div>
+
+      <!-- right: text -->
+      <div>
+        <div class="section-label">WHO WE ARE</div>
+        <h2 style="font-size:clamp(2.8rem,4.5vw,4.5rem);line-height:0.93;margin-bottom:24px;color:#0a0a0a;">
+          LOCALLY<br/>ROOTED,<br/><span style="background:linear-gradient(135deg,#c85a14,#8a3a08);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">GLOBALLY</span><br/>QUALITY.
+        </h2>
+        <p style="font-size:1.05rem;line-height:1.78;color:#3a3a3a;margin-bottom:20px;">
+          Fortkopi Print is a locally owned apparel decorating business in Danielskuil, Northern Cape, founded in 2020. We specialize in high-quality, customized branding solutions for individuals, small businesses, and corporate clients — particularly in the mining regions of the ZF Mgcawu District.
+        </p>
+        <p style="font-size:1.05rem;line-height:1.78;color:#3a3a3a;margin-bottom:36px;">
+          The company emphasizes quality, ethical practices, and community development. Services include custom printing on mugs, vinyl printing, embroidery, and corporate apparel branding, as well as protective wear for mining clients. Our customer-first approach highlights our commitment to creativity, reliability, and superior quality.
+        </p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <span class="orange-pill">✦ Quality</span>
+          <span class="orange-pill">✦ Ethical Practices</span>
+          <span class="orange-pill">✦ Community</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ░░ STAT STRIP ░░ -->
+<div class="stat-strip" style="padding:56px 0;">
+  <div style="max-width:1280px;margin:auto;padding:0 32px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center;">
+    <div>
+      <div class="stat-num">2020</div>
+      <div style="font-family:'Space Mono',monospace;font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:5px;">Year Founded</div>
+    </div>
+    <div>
+      <div class="stat-num">ZF</div>
+      <div style="font-family:'Space Mono',monospace;font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:5px;">Mgcawu District</div>
+    </div>
+    <div>
+      <div class="stat-num">5+</div>
+      <div style="font-family:'Space Mono',monospace;font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:5px;">Service Lines</div>
+    </div>
+    <div>
+      <div class="stat-num">100%</div>
+      <div style="font-family:'Space Mono',monospace;font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:5px;">Ethical Production</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ░░ VISION & MISSION ░░ -->
+<section class="section-dark" style="padding:100px 0;">
+  <div style="max-width:1280px;margin:auto;padding:0 32px;">
+    <div class="section-label" style="color:#e87030;margin-bottom:16px;">OUR DIRECTION</div>
+    <h2 style="font-size:clamp(3rem,5vw,5rem);color:#fff;margin-bottom:56px;line-height:0.92;">VISION <span style="color:var(--orange);">&</span> MISSION</h2>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+      <div class="vm-card">
+        <div style="width:50px;height:50px;background:linear-gradient(135deg,var(--orange),#8a3a08);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:22px;box-shadow:0 8px 20px rgba(200,90,20,0.4);">
+          <i class="fas fa-eye" style="color:#fff;font-size:1.1rem;"></i>
+        </div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--orange);margin-bottom:8px;">/ 01</div>
+        <h3 style="font-size:2.8rem;color:#fff;margin-bottom:14px;">VISION</h3>
+        <p style="color:rgba(255,255,255,0.62);font-size:1.02rem;line-height:1.78;margin-bottom:20px;">
+          To be a top apparel decorating company providing quality branding products, empowering youth, and fostering community development while creating employment opportunities in the Northern Cape region.
+        </p>
+        <div style="font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(200,90,20,0.6);border-top:1px solid rgba(255,255,255,0.08);padding-top:16px;">— Long-term Impact</div>
+      </div>
+      <div class="vm-card">
+        <div style="width:50px;height:50px;background:linear-gradient(135deg,var(--orange),#8a3a08);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:22px;box-shadow:0 8px 20px rgba(200,90,20,0.4);">
+          <i class="fas fa-bullseye" style="color:#fff;font-size:1.1rem;"></i>
+        </div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--orange);margin-bottom:8px;">/ 02</div>
+        <h3 style="font-size:2.8rem;color:#fff;margin-bottom:14px;">MISSION</h3>
+        <p style="color:rgba(255,255,255,0.62);font-size:1.02rem;line-height:1.78;margin-bottom:20px;">
+          Provide exceptional custom branding solutions through ethical practices, compete with established brands by offering quality and affordable services, and support youth empowerment and local employment as a trusted branding partner.
+        </p>
+        <div style="font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(200,90,20,0.6);border-top:1px solid rgba(255,255,255,0.08);padding-top:16px;">— Ethical · Local · Quality</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ░░ FOUNDER ░░ 
+<section id="founder" style="padding:100px 0;background:linear-gradient(160deg,#f8f4f0 0%,#fbe8d6 100%);">
+  <div style="max-width:1280px;margin:auto;padding:0 32px;">
+    <div class="section-label">THE PERSON BEHIND IT</div>
+    <h2 style="font-size:clamp(3rem,5vw,5rem);line-height:0.92;margin-bottom:48px;color:#0a0a0a;">MEET THE<br/><span style="background:linear-gradient(135deg,#c85a14,#8a3a08);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">FOUNDER</span></h2>
+
+    <div class="founder-wrap">
+      <div style="display:grid;grid-template-columns:0.9fr 1.1fr;">
+        <div style="position:relative;min-height:520px;">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=700&q=80" alt="Elvis Boom" style="width:100%;height:100%;object-fit:cover;object-position:center top;"/>
+          <div style="position:absolute;inset:0;background:linear-gradient(90deg,transparent 55%,rgba(30,15,5,0.95));"></div>
+          <div style="position:absolute;bottom:28px;left:28px;">
+            <span style="background:linear-gradient(135deg,var(--orange),#8a3a08);color:#fff;font-family:'Space Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;padding:6px 16px;border-radius:100px;display:inline-block;">Founder & MD</span>
+          </div>
+        </div>
+        <div style="padding:56px 52px;display:flex;flex-direction:column;justify-content:center;">
+          <h3 style="font-size:clamp(2.6rem,3.8vw,4rem);color:#fff;line-height:0.93;margin-bottom:22px;">ELVIS<br/>BOOM</h3>
+          <p style="color:rgba(255,255,255,0.65);font-size:1.02rem;line-height:1.78;margin-bottom:28px;">
+            Elvis Boom, Founder and Managing Director of Fortkopi Print, is an innovative entrepreneur focused on community development and excellence. He has experience in retail, customer service, and strategic planning, aiming to merge creativity with community impact across the Northern Cape.
+          </p>
+
+          <div style="display:flex;flex-direction:column;gap:22px;margin-bottom:32px;">
+            <div class="timeline-item">
+              <div style="font-family:'Space Mono',monospace;font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--orange);margin-bottom:4px;">Background</div>
+              <p style="color:rgba(255,255,255,0.6);font-size:0.9rem;line-height:1.6;">Retail & customer service — built a deep understanding of what clients truly need.</p>
+            </div>
+            <div class="timeline-item">
+              <div style="font-family:'Space Mono',monospace;font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--orange);margin-bottom:4px;">Strategy</div>
+              <p style="color:rgba(255,255,255,0.6);font-size:0.9rem;line-height:1.6;">Strategic planning & business development to grow Fortkopi into a trusted regional brand.</p>
+            </div>
+            <div class="timeline-item">
+              <div style="font-family:'Space Mono',monospace;font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--orange);margin-bottom:4px;">Mission</div>
+              <p style="color:rgba(255,255,255,0.6);font-size:0.9rem;line-height:1.6;">Youth empowerment, local job creation, and community upliftment at the heart of every decision.</p>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <span style="background:rgba(200,90,20,0.18);border:1px solid rgba(200,90,20,0.45);color:#e87030;padding:6px 18px;border-radius:100px;font-size:0.75rem;font-family:'Space Mono',monospace;">#communityFirst</span>
+            <span style="background:rgba(200,90,20,0.18);border:1px solid rgba(200,90,20,0.45);color:#e87030;padding:6px 18px;border-radius:100px;font-size:0.75rem;font-family:'Space Mono',monospace;">#creativeExcellence</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+<!-- ░░ OUR EDGE ░░ -->
+<section style="padding:100px 0;background:var(--off-white);">
+  <div style="max-width:1280px;margin:auto;padding:0 32px;">
+    <div class="section-label">WHY CHOOSE US</div>
+    <h2 style="font-size:clamp(3rem,5vw,5rem);line-height:0.92;margin-bottom:56px;color:#0a0a0a;">OUR <span style="background:linear-gradient(135deg,#c85a14,#8a3a08);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">EDGE</span></h2>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px;">
+
+      <!-- Quality -->
+      <div class="edge-card glass-light" style="padding:36px;">
+        <div style="width:100%;height:190px;border-radius:14px;overflow:hidden;margin-bottom:22px;position:relative;">
+          <img src="assets/quality.png" alt="Quality" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"/>
+        </div>
+        <div class="edge-overlay">
+          <i class="fas fa-medal" style="font-size:2rem;color:#e87030;margin-bottom:12px;"></i>
+          <h4 style="font-size:1.4rem;color:#fff;margin-bottom:10px;">QUALITY ASSURANCE</h4>
+          <p style="color:rgba(255,255,255,0.8);font-size:0.88rem;line-height:1.65;">From material selection to final delivery — every product meets our highest production standards for consistency and satisfaction.</p>
+        </div>
+        <div style="width:42px;height:42px;background:linear-gradient(135deg,var(--orange),#8a3a08);border-radius:11px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;box-shadow:0 6px 16px rgba(200,90,20,0.35);">
+          <i class="fas fa-medal" style="color:#fff;font-size:0.95rem;"></i>
+        </div>
+        <h4 style="font-size:1.7rem;color:#0a0a0a;margin-bottom:10px;">QUALITY ASSURANCE</h4>
+        <p style="color:#555;font-size:0.9rem;line-height:1.7;">We maintain the highest production standards, from material selection to final delivery, ensuring consistency and customer satisfaction.</p>
+      </div>
+
+      <!-- Ethical -->
+      <div class="edge-card glass-light" style="padding:36px;">
+        <div style="width:100%;height:190px;border-radius:14px;overflow:hidden;margin-bottom:22px;">
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80" alt="Ethical" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"/>
+        </div>
+        <div class="edge-overlay">
+          <i class="fas fa-hand-holding-heart" style="font-size:2rem;color:#e87030;margin-bottom:12px;"></i>
+          <h4 style="font-size:1.4rem;color:#fff;margin-bottom:10px;">ETHICAL PRODUCTION</h4>
+          <p style="color:rgba(255,255,255,0.8);font-size:0.88rem;line-height:1.65;">Responsible sourcing and transparent production processes that benefit clients and the wider community alike.</p>
+        </div>
+        <div style="width:42px;height:42px;background:linear-gradient(135deg,var(--orange),#8a3a08);border-radius:11px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;box-shadow:0 6px 16px rgba(200,90,20,0.35);">
+          <i class="fas fa-hand-holding-heart" style="color:#fff;font-size:0.95rem;"></i>
+        </div>
+        <h4 style="font-size:1.7rem;color:#0a0a0a;margin-bottom:10px;">ETHICAL PRODUCTION</h4>
+        <p style="color:#555;font-size:0.9rem;line-height:1.7;">Our business upholds responsible sourcing and transparent production processes that benefit clients and the wider community.</p>
+      </div>
+
+      <!-- Community -->
+      <div class="edge-card glass-light" style="padding:36px;border-color:rgba(200,90,20,0.35);background:rgba(251,232,214,0.55);">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px;">
+          <div style="height:88px;border-radius:12px;overflow:hidden;">
+            <img src="assets/ab1.png" alt="Youth" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"/>
+          </div>
+          <div style="height:88px;border-radius:12px;overflow:hidden;">
+            <img src="assets/ab2.png" alt="Local" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"/>
+          </div>
+        </div>
+        <div class="edge-overlay">
+          <i class="fas fa-users" style="font-size:2rem;color:#e87030;margin-bottom:12px;"></i>
+          <h4 style="font-size:1.4rem;color:#fff;margin-bottom:10px;">COMMUNITY-CENTERED</h4>
+          <p style="color:rgba(255,255,255,0.8);font-size:0.88rem;line-height:1.65;">Youth programs, job creation & local growth initiatives — we invest profits back into the Northern Cape.</p>
+        </div>
+        <div style="width:42px;height:42px;background:linear-gradient(135deg,var(--orange),#8a3a08);border-radius:11px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;box-shadow:0 6px 16px rgba(200,90,20,0.35);">
+          <i class="fas fa-users" style="color:#fff;font-size:0.95rem;"></i>
+        </div>
+        <h4 style="font-size:1.7rem;color:#0a0a0a;margin-bottom:10px;">COMMUNITY-CENTERED</h4>
+        <p style="color:#555;font-size:0.9rem;line-height:1.7;">By investing profits into youth programs, supporting local growth, and creating jobs, we contribute meaningfully to upliftment in the Northern Cape.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ░░ TARGET MARKETS ░░ -->
+<section class="section-dark" style="padding:100px 0;">
+  <div style="max-width:1280px;margin:auto;padding:0 32px;">
+    <div class="section-label" style="color:#e87030;">WHO WE SERVE</div>
+    <h2 style="font-size:clamp(3rem,5vw,5rem);color:#fff;margin-bottom:56px;line-height:0.92;">TARGET <span style="color:var(--orange);">MARKETS</span></h2>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+      <!-- Market 1 -->
+      <div class="vm-card">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:5rem;color:rgba(200,90,20,0.1);line-height:1;position:absolute;top:20px;right:24px;">01</div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--orange);margin-bottom:12px;">Market / 01</div>
+        <h3 style="font-size:2.4rem;color:#fff;margin-bottom:14px;">FORTKOPI<br/>CLOTHING LINE</h3>
+        <p style="color:rgba(255,255,255,0.6);font-size:1rem;line-height:1.75;margin-bottom:22px;">
+          Trend-driven, pre-designed T-shirts for youth (ages 14–25) who value self-expression and modern fashion. Accessible, bold, and community-inspired.
+        </p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <span style="background:rgba(200,90,20,0.15);border:1px solid rgba(200,90,20,0.35);color:#e87030;padding:5px 14px;border-radius:100px;font-size:0.72rem;font-weight:600;">Ages 14–25</span>
+          <span style="background:rgba(200,90,20,0.15);border:1px solid rgba(200,90,20,0.35);color:#e87030;padding:5px 14px;border-radius:100px;font-size:0.72rem;font-weight:600;">Youth Fashion</span>
+          <span style="background:rgba(200,90,20,0.15);border:1px solid rgba(200,90,20,0.35);color:#e87030;padding:5px 14px;border-radius:100px;font-size:0.72rem;font-weight:600;">Self-Expression</span>
+        </div>
+      </div>
+      <!-- Market 2 -->
+      <div class="vm-card">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:5rem;color:rgba(200,90,20,0.1);line-height:1;position:absolute;top:20px;right:24px;">02</div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--orange);margin-bottom:12px;">Market / 02</div>
+        <h3 style="font-size:2.4rem;color:#fff;margin-bottom:14px;">CORPORATE &<br/>PROFESSIONAL</h3>
+        <p style="color:rgba(255,255,255,0.6);font-size:1rem;line-height:1.75;margin-bottom:22px;">
+          Custom apparel for entrepreneurs, working professionals, and creatives (ages 25–46) seeking premium, custom-branded products for their teams, events, and mining operations.
+        </p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <span style="background:rgba(200,90,20,0.15);border:1px solid rgba(200,90,20,0.35);color:#e87030;padding:5px 14px;border-radius:100px;font-size:0.72rem;font-weight:600;">Ages 25–46</span>
+          <span style="background:rgba(200,90,20,0.15);border:1px solid rgba(200,90,20,0.35);color:#e87030;padding:5px 14px;border-radius:100px;font-size:0.72rem;font-weight:600;">Corporates</span>
+          <span style="background:rgba(200,90,20,0.15);border:1px solid rgba(200,90,20,0.35);color:#e87030;padding:5px 14px;border-radius:100px;font-size:0.72rem;font-weight:600;">Mining Sector</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ░░ CTA ░░ -->
+<section style="padding:90px 0;background:var(--off-white);position:relative;overflow:hidden;">
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(200,90,20,0.08),transparent 70%);pointer-events:none;"></div>
+  <div style="max-width:1280px;margin:auto;padding:0 32px;position:relative;z-index:2;">
+    <div class="glass-light" style="padding:60px;text-align:center;border-color:rgba(200,90,20,0.25);">
+      <div style="font-family:'Space Mono',monospace;font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange);margin-bottom:16px;display:flex;align-items:center;justify-content:center;gap:10px;"><span style="display:block;width:28px;height:2px;background:var(--orange);"></span>READY TO START?</div>
+      <h2 style="font-size:clamp(2.8rem,5vw,5rem);line-height:0.92;color:#0a0a0a;margin-bottom:20px;">LET'S BUILD<br/><span style="background:linear-gradient(135deg,#c85a14,#8a3a08);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">SOMETHING</span><br/>TOGETHER.</h2>
+      <p style="color:#666;font-size:1rem;max-width:420px;margin:0 auto 36px;line-height:1.75;">Ready to order, or just want to chat about your next project? Reach out and let's create something exceptional.</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+        <a href="mailto:hello@fortkopi.co.za" class="btn-primary"><i class="fas fa-envelope"></i> GET A QUOTE</a>
+        <a href="fortkopi-print.html#services" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:#0a0a0a;font-weight:600;padding:12px 28px;border-radius:100px;font-size:0.9rem;border:2px solid rgba(10,10,10,0.2);transition:all 0.3s;text-decoration:none;" onmouseover="this.style.borderColor='var(--orange)';this.style.color='var(--orange)'" onmouseout="this.style.borderColor='rgba(10,10,10,0.2)';this.style.color='#0a0a0a'"><i class="fas fa-tshirt"></i> VIEW SERVICES</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ░░ FOOTER ░░ -->
+<footer style="background:#000;border-top:2px solid var(--orange);padding:44px 0 28px;">
+  <div style="max-width:1280px;margin:auto;padding:0 32px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;margin-bottom:32px;">
+      <div style="display:flex;align-items:center;gap:14px;">
+        <div style="width:48px;height:48px;background:linear-gradient(135deg,var(--orange),#8a3a08);border-radius:12px;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(200,90,20,0.4);">
+          <span style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:#fff;">FP</span>
+        </div>
+        <div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:#fff;letter-spacing:0.05em;">FORTKOPI <span style="color:var(--orange);">PRINT</span></div>
+          <div style="font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:2px;">About Us · 2026 Profile</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:22px;flex-wrap:wrap;">
+        <a href="fortkopi-print.html" style="font-family:'Space Mono',monospace;font-size:0.66rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.35);text-decoration:none;" onmouseover="this.style.color='#e87030'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">Home</a>
+        <a href="#story" style="font-family:'Space Mono',monospace;font-size:0.66rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.35);text-decoration:none;" onmouseover="this.style.color='#e87030'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">Story</a>
+        <a href="#founder" style="font-family:'Space Mono',monospace;font-size:0.66rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.35);text-decoration:none;" onmouseover="this.style.color='#e87030'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">Founder</a>
+      </div>
+    </div>
+    <div class="grad-line" style="opacity:0.35;margin-bottom:24px;"></div>
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+      <p style="font-family:'Space Mono',monospace;font-size:0.64rem;color:rgba(255,255,255,0.22);letter-spacing:0.1em;">© 2026 FORTKOPI PRINT. ALL RIGHTS RESERVED.</p>
+      <p style="font-size:0.78rem;color:rgba(255,255,255,0.28);">✦ Ethical · Quality · Youth Empowerment</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
