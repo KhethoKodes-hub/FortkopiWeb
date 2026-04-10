@@ -16,6 +16,10 @@
       --orange-pale: #fbe8d6;
       --black: #0a0a0a;
       --off-white: #f8f4f0;
+      --purple: #7c3aed;
+      --purple-light: #a78bfa;
+      --yellow: #f59e0b;
+      --yellow-light: #fcd34d;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -42,8 +46,8 @@
     .page-hero {
       min-height: 72vh;
       background:
-        linear-gradient(155deg, rgba(10,10,10,0.9) 0%, rgba(200,90,20,0.4) 50%, rgba(10,10,10,0.92) 100%),
-        url('https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=1800&q=80') center/cover no-repeat;
+        linear-gradient(155deg, rgba(10,10,10,0.9) 0%, rgba(124,58,237,0.15) 22%, rgba(200,90,20,0.4) 50%, rgba(245,158,11,0.12) 75%, rgba(10,10,10,0.92) 100%),
+        url('./assets/work14.jpeg') center/cover no-repeat;
       display: flex; flex-direction: column; justify-content: flex-end;
       position: relative; overflow: hidden; padding-top: 68px;
     }
@@ -109,13 +113,17 @@
     /* ── BUTTONS ── */
     .btn-primary {
       display: inline-flex; align-items: center; gap: 10px;
-      background: linear-gradient(135deg, var(--orange), #8a3a08);
+      background: linear-gradient(135deg, var(--orange), #7c3aed);
       color: #fff; font-weight: 700; padding: 13px 30px;
       border-radius: 100px; font-size: 0.9rem;
       box-shadow: 0 8px 24px rgba(200,90,20,0.4);
       transition: all 0.3s ease; text-decoration: none;
     }
-    .btn-primary:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 16px 40px rgba(200,90,20,0.5); }
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 16px 40px rgba(200,90,20,0.5);
+      background: linear-gradient(135deg, #d96018, #6d28d9);
+    }
 
     /* ── MAIN SERVICE CARDS ── */
     .svc-card {
@@ -127,11 +135,11 @@
     }
     .svc-card::before {
       content: ''; position: absolute; inset: 0;
-      background: linear-gradient(0deg, rgba(10,10,10,0.94) 0%, rgba(10,10,10,0.3) 55%, rgba(200,90,20,0.1) 100%);
+      background: linear-gradient(0deg, rgba(10,10,10,0.94) 0%, rgba(124,58,237,0.08) 35%, rgba(10,10,10,0.3) 55%, rgba(200,90,20,0.1) 100%);
       z-index: 1; transition: 0.4s;
     }
     .svc-card:hover::before {
-      background: linear-gradient(0deg, rgba(10,10,10,0.97) 0%, rgba(200,90,20,0.32) 55%, rgba(10,10,10,0.15) 100%);
+      background: linear-gradient(0deg, rgba(10,10,10,0.97) 0%, rgba(200,90,20,0.32) 55%, rgba(124,58,237,0.12) 80%, rgba(10,10,10,0.15) 100%);
     }
     .svc-card:hover {
       transform: translateY(-10px) scale(1.015);
@@ -153,7 +161,7 @@
     }
     .svc-icon {
       width: 46px; height: 46px;
-      background: linear-gradient(135deg, var(--orange), #8a3a08);
+      background: linear-gradient(135deg, var(--orange), #7c3aed);
       border-radius: 13px; display: flex; align-items: center; justify-content: center;
       margin-bottom: 12px; font-size: 18px; color: #fff;
       box-shadow: 0 8px 20px rgba(200,90,20,0.4);
@@ -185,7 +193,7 @@
     .niche-card::after {
       content: ''; position: absolute; bottom: -30px; right: -30px;
       width: 140px; height: 140px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(200,90,20,0.14), transparent 70%);
+      background: radial-gradient(circle, rgba(200,90,20,0.14), rgba(124,58,237,0.08) 50%, transparent 70%);
       transition: 0.4s;
     }
     .niche-card:hover::after { transform: scale(1.8); }
@@ -204,18 +212,18 @@
     .step-number {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 3.5rem; line-height: 1;
-      background: linear-gradient(135deg, var(--orange-light), rgba(255,255,255,0.2));
+      background: linear-gradient(135deg, var(--orange-light), var(--yellow-light), rgba(255,255,255,0.2));
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
 
     /* ── STAT STRIP ── */
     .stat-strip {
-      background: linear-gradient(135deg, var(--black) 0%, #1a1a1a 50%, #2a1a0a 100%);
+      background: linear-gradient(135deg, var(--black) 0%, #1a0a2e 30%, #2a1a0a 60%, #1a1500 100%);
       border-top: 2px solid var(--orange); border-bottom: 2px solid var(--orange);
     }
     .stat-num {
       font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem,5vw,4rem);
-      background: linear-gradient(135deg, var(--orange-light), #fff);
+      background: linear-gradient(135deg, var(--orange-light), var(--yellow-light), #fff);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
 
@@ -262,8 +270,19 @@
       padding: 6px 18px; display: inline-block;
       box-shadow: 0 6px 18px rgba(200,90,20,0.38);
     }
-    .grad-line { height:2px; background:linear-gradient(90deg,transparent,var(--orange),var(--black),transparent); }
-    .section-dark { background: linear-gradient(160deg, var(--black) 0%, #1c1008 60%, #0a0a0a 100%); }
+
+    .grad-line {
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--purple), var(--orange), var(--yellow), var(--black), transparent);
+    }
+
+    .section-dark {
+      background: linear-gradient(160deg, var(--black) 0%, #0e0520 30%, #1c1008 65%, #0a0a0a 100%);
+    }
+
+    .about-bg {
+      background: linear-gradient(160deg, rgba(248,244,240,0.97) 0%, rgba(237,233,254,0.3) 35%, rgba(251,232,214,0.92) 70%, rgba(254,252,232,0.45) 100%);
+    }
 
     /* breadcrumb */
     .breadcrumb a {
@@ -283,15 +302,14 @@
     <div style="display:flex;align-items:center;justify-content:space-between;height:68px;">
       <div style="display:flex;align-items:center;gap:14px;">
         <div style="width:40px;height:40px;background:linear-gradient(135deg,#c85a14,#8a3a08);border-radius:11px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(200,90,20,0.5);">
-          <span style="font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:#fff;">FP</span>
+        <img src="assets/OriginaLogo.jpeg" alt="Fortkopi Logo" style="width:150px;height: 150px;object-fit:contain;">
         </div>
         <span style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:0.06em;color:#fff;">FORTKOPI <span style="color:#c85a14;">PRINT</span></span>
       </div>
       <div style="display:flex;align-items:center;gap:28px;">
         <a href="index.html" style="color:rgba(255,255,255,0.55);font-size:0.85rem;font-weight:600;letter-spacing:0.06em;text-decoration:none;" onmouseover="this.style.color='#e87030'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">HOME</a>
-                <a href="index.html" style="color:rgba(255,255,255,0.55);font-size:0.85rem;font-weight:600;letter-spacing:0.06em;text-decoration:none;" onmouseover="this.style.color='#e87030'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">SERVICES</a>
-
         <a href="about.html" style="color:rgba(255,255,255,0.55);font-size:0.85rem;font-weight:600;letter-spacing:0.06em;text-decoration:none;" onmouseover="this.style.color='#e87030'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">ABOUT</a>
+        <a href="services.html" style="color:rgba(255,255,255,0.55);font-size:0.85rem;font-weight:600;letter-spacing:0.06em;text-decoration:none;" onmouseover="this.style.color='#e87030'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">SERVICES</a>
         <a href="contact.html" class="btn-primary" style="padding:9px 22px;font-size:0.8rem;">GET A QUOTE</a>
       </div>
     </div>
@@ -304,17 +322,17 @@
   <div style="max-width:1320px;margin:auto;padding:0 32px 64px;position:relative;z-index:2;">
 
     <div class="breadcrumb anim-fade-up" style="margin-bottom:30px;">
-      <a href="fortkopi-print.html">Home</a>
+      <a href="index.html">Home</a>
       <span>/</span>
-      <a href="#" style="color:var(--orange-light);">Services</a>
+      <a href="services.html" style="color:var(--orange-light);">Services</a>
     </div>
 
-    <div style="max-width:720px;">
+    <!--<div style="max-width:720px;">
       <div class="anim-fade-up anim-d1" style="margin-bottom:20px;">
         <span class="hero-badge"><span class="scroll-dot"></span> FULL SERVICE BRANDING · DANIELSKUIL, NC</span>
-      </div>
+      </div>-->
       <h1 class="anim-fade-up anim-d2" style="font-size:clamp(4rem,9vw,8rem);line-height:0.9;color:#fff;margin-bottom:22px;">
-        WHAT<br/>WE <span style="background:linear-gradient(135deg,#e87030,#c85a14,#fff 80%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">CREATE.</span>
+        WHAT<br/>WE <span style="background:linear-gradient(135deg,#fcd34d,#e87030,#c85a14,#a78bfa 80%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">CREATE.</span>
       </h1>
       <p class="anim-fade-up anim-d3" style="font-size:1.1rem;color:rgba(255,255,255,0.68);max-width:540px;line-height:1.75;margin-bottom:36px;">
         From custom apparel and sublimation to embroidery and bulk school uniforms — every product reflects our commitment to quality, ethics, and community.
@@ -325,18 +343,17 @@
       </div>
     </div>
 
-    <!-- floating glass chips -->
     <div class="anim-fade-up" style="animation-delay:0.7s;display:flex;gap:14px;margin-top:56px;flex-wrap:wrap;">
       <div class="glass" style="padding:15px 22px;border-radius:14px;text-align:center;min-width:110px;">
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.9rem;color:#e87030;line-height:1;">4</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.9rem;background:linear-gradient(135deg,#e87030,#fcd34d);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;">4</div>
         <div style="color:rgba(255,255,255,0.5);font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;margin-top:2px;">Core Services</div>
       </div>
       <div class="glass" style="padding:15px 22px;border-radius:14px;text-align:center;min-width:110px;">
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.9rem;color:#e87030;line-height:1;">500+</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.9rem;background:linear-gradient(135deg,#a78bfa,#e87030);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;">500+</div>
         <div style="color:rgba(255,255,255,0.5);font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;margin-top:2px;">Units Per Run</div>
       </div>
       <div class="glass" style="padding:15px 22px;border-radius:14px;text-align:center;min-width:110px;">
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.9rem;color:#e87030;line-height:1;">100%</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.9rem;background:linear-gradient(135deg,#fcd34d,#c85a14);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;">100%</div>
         <div style="color:rgba(255,255,255,0.5);font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;margin-top:2px;">Quality Checked</div>
       </div>
     </div>
@@ -345,7 +362,7 @@
 
 
 <!-- ░░ MARQUEE ░░ -->
-<div style="background:var(--orange);overflow:hidden;padding:13px 0;border-top:2px solid rgba(0,0,0,0.18);border-bottom:2px solid rgba(0,0,0,0.18);">
+<div style="background:linear-gradient(90deg,var(--orange) 0%,#b84e0e 40%,#a84008 60%,var(--orange) 100%);overflow:hidden;padding:13px 0;border-top:2px solid rgba(0,0,0,0.18);border-bottom:2px solid rgba(0,0,0,0.18);">
   <div style="display:flex;gap:48px;animation:marquee 22s linear infinite;width:max-content;">
     <span style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.1em;color:rgba(0,0,0,0.65);white-space:nowrap;">✦ CUSTOM APPAREL PRINTING</span>
     <span style="color:rgba(0,0,0,0.3);">·</span>
@@ -359,7 +376,6 @@
     <span style="color:rgba(0,0,0,0.3);">·</span>
     <span style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.1em;color:rgba(0,0,0,0.65);white-space:nowrap;">MINING PROTECTIVE WEAR</span>
     <span style="color:rgba(0,0,0,0.3);">·</span>
-    <!-- duplicate -->
     <span style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.1em;color:rgba(0,0,0,0.65);white-space:nowrap;">✦ CUSTOM APPAREL PRINTING</span>
     <span style="color:rgba(0,0,0,0.3);">·</span>
     <span style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.1em;color:rgba(0,0,0,0.65);white-space:nowrap;">SUBLIMATION ON MUGS & CERAMICS</span>
@@ -382,17 +398,15 @@
     <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:56px;flex-wrap:wrap;gap:24px;">
       <div>
         <div class="section-label">WHAT WE OFFER</div>
-        <h2 style="font-size:clamp(3rem,5.5vw,5.5rem);line-height:0.92;color:#0a0a0a;">CORE<br/><span style="background:linear-gradient(135deg,#c85a14,#8a3a08);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">SERVICES</span></h2>
+        <h2 style="font-size:clamp(3rem,5.5vw,5.5rem);line-height:0.92;color:#0a0a0a;">CORE<br/><span style="background:linear-gradient(135deg,#c85a14,#7c3aed,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">SERVICES</span></h2>
       </div>
       <p style="max-width:360px;color:#555;font-size:1rem;line-height:1.75;align-self:flex-end;">Every service is crafted with precision, ethical sourcing, and a relentless focus on your brand's impact.</p>
     </div>
 
-    <!-- Row 1: 2-wide + 2-narrow -->
     <div style="display:grid;grid-template-columns:1.4fr 0.6fr 0.6fr 1.4fr;gap:20px;height:500px;margin-bottom:20px;">
 
-      <!-- 1: Custom Apparel – LARGE -->
       <div class="svc-card">
-        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&q=80" alt="Custom Apparel Printing"/>
+        <img src="assets/work24.jpeg" alt="Custom Apparel Printing"/>
         <div class="svc-card-body">
           <div class="svc-tag">01 · Apparel</div>
           <div class="svc-icon"><i class="fas fa-tshirt"></i></div>
@@ -407,12 +421,11 @@
         </div>
       </div>
 
-      <!-- 2: Sublimation – NARROW -->
       <div class="svc-card">
-        <img src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=600&q=80" alt="Sublimation Printing"/>
+        <img src="assets/work4.jpeg" alt="Sublimation Printing"/>
         <div class="svc-card-body">
           <div class="svc-tag">02</div>
-          <div class="svc-icon"><i class="fas fa-mug-hot"></i></div>
+          <div class="svc-icon" style="background:linear-gradient(135deg,#f59e0b,#c85a14);"><i class="fas fa-mug-hot"></i></div>
           <h3 style="font-size:1.7rem;color:#fff;line-height:1.02;margin-bottom:8px;">SUBLIMATION PRINTING</h3>
           <p style="color:rgba(255,255,255,0.58);font-size:0.82rem;line-height:1.6;">Full-color durable designs on mugs, plates & ceramic items.</p>
           <div class="svc-features">
@@ -423,12 +436,11 @@
         </div>
       </div>
 
-      <!-- 3: Embroidery – NARROW -->
       <div class="svc-card">
-        <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=600&q=80" alt="Embroidery Services"/>
+        <img src="assets/work11.jpeg" alt="Embroidery Services"/>
         <div class="svc-card-body">
           <div class="svc-tag">03</div>
-          <div class="svc-icon"><i class="fas fa-paint-brush"></i></div>
+          <div class="svc-icon" style="background:linear-gradient(135deg,#7c3aed,#c85a14);"><i class="fas fa-paint-brush"></i></div>
           <h3 style="font-size:1.7rem;color:#fff;line-height:1.02;margin-bottom:8px;">EMBROIDERY SERVICES</h3>
           <p style="color:rgba(255,255,255,0.58);font-size:0.82rem;line-height:1.6;">Premium embroidery branding for uniforms & protective wear.</p>
           <div class="svc-features">
@@ -439,9 +451,8 @@
         </div>
       </div>
 
-      <!-- 4: Bulk Orders – LARGE -->
       <div class="svc-card">
-        <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=800&q=80" alt="Bulk Orders"/>
+        <img src="assets/work15.jpeg" alt="Bulk Orders"/>
         <div class="svc-card-body">
           <div class="svc-tag">04 · Bulk</div>
           <div class="svc-icon"><i class="fas fa-boxes"></i></div>
@@ -487,15 +498,14 @@
 <section style="padding:100px 0;background:var(--off-white);">
   <div style="max-width:1320px;margin:auto;padding:0 32px;">
     <div class="section-label">SPECIALITY OFFERINGS</div>
-    <h2 style="font-size:clamp(2.8rem,4.5vw,4.5rem);line-height:0.92;margin-bottom:52px;color:#0a0a0a;">BEYOND THE <span style="background:linear-gradient(135deg,#c85a14,#8a3a08);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">BASICS</span></h2>
+    <h2 style="font-size:clamp(2.8rem,4.5vw,4.5rem);line-height:0.92;margin-bottom:52px;color:#0a0a0a;">BEYOND THE <span style="background:linear-gradient(135deg,#c85a14,#7c3aed,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">BASICS</span></h2>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
 
-      <!-- Mining & Protective Wear -->
       <div class="niche-card glass-light" style="display:flex;gap:28px;align-items:flex-start;">
         <div style="position:relative;width:200px;min-width:200px;height:200px;border-radius:16px;overflow:hidden;flex-shrink:0;">
-          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&q=80" alt="Mining Protective Wear" style="width:100%;height:100%;object-fit:cover;"/>
-          <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(200,90,20,0.25),rgba(10,10,10,0.35));"></div>
+          <img src="assets/work17.jpeg" alt="Mining Protective Wear" style="width:100%;height:100%;object-fit:cover;"/>
+          <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(200,90,20,0.25),rgba(124,58,237,0.15),rgba(10,10,10,0.35));"></div>
         </div>
         <div style="padding:6px 0;">
           <div style="font-family:'Space Mono',monospace;font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange);margin-bottom:10px;">Specialty / 01</div>
@@ -503,23 +513,22 @@
           <p style="color:#555;font-size:0.93rem;line-height:1.72;margin-bottom:16px;">Specialised branding for mining regions of the ZF Mgcawu District — durable, high-visibility, and compliant with safety standards. Embroidery & reflective prints available.</p>
           <div style="display:flex;gap:8px;flex-wrap:wrap;">
             <span class="orange-pill" style="font-size:0.6rem;padding:4px 14px;">Reflective Prints</span>
-            <span class="orange-pill" style="font-size:0.6rem;padding:4px 14px;">Safety Compliant</span>
+            <span style="background:linear-gradient(135deg,#7c3aed,#5b21b6);color:#fff;border-radius:100px;font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;padding:4px 14px;display:inline-block;box-shadow:0 4px 12px rgba(124,58,237,0.3);">Safety Compliant</span>
           </div>
         </div>
       </div>
 
-      <!-- Vinyl & Corporate -->
       <div class="niche-card glass-light" style="display:flex;gap:28px;align-items:flex-start;">
         <div style="position:relative;width:200px;min-width:200px;height:200px;border-radius:16px;overflow:hidden;flex-shrink:0;">
-          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=500&q=80" alt="Corporate Vinyl" style="width:100%;height:100%;object-fit:cover;"/>
-          <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(200,90,20,0.2),rgba(10,10,10,0.3));"></div>
+          <img src="assets/work20.jpeg" alt="Corporate Vinyl" style="width:100%;height:100%;object-fit:cover;"/>
+          <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(245,158,11,0.15),rgba(200,90,20,0.2),rgba(10,10,10,0.3));"></div>
         </div>
         <div style="padding:6px 0;">
           <div style="font-family:'Space Mono',monospace;font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange);margin-bottom:10px;">Specialty / 02</div>
           <h3 style="font-size:2rem;color:#0a0a0a;margin-bottom:12px;line-height:1.05;">VINYL &<br/>CORPORATE</h3>
           <p style="color:#555;font-size:0.93rem;line-height:1.72;margin-bottom:16px;">Precision vinyl printing for signs, decals, and custom garments. Trusted by entrepreneurs and professionals (25–46) seeking premium branded apparel and corporate identity.</p>
           <div style="display:flex;gap:8px;flex-wrap:wrap;">
-            <span class="orange-pill" style="font-size:0.6rem;padding:4px 14px;">Signs & Decals</span>
+            <span style="background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border-radius:100px;font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;padding:4px 14px;display:inline-block;box-shadow:0 4px 12px rgba(245,158,11,0.3);">Signs & Decals</span>
             <span class="orange-pill" style="font-size:0.6rem;padding:4px 14px;">Corporate ID</span>
           </div>
         </div>
@@ -533,13 +542,13 @@
 <section id="process" class="section-dark" style="padding:100px 0;">
   <div style="max-width:1320px;margin:auto;padding:0 32px;">
     <div class="section-label" style="color:#e87030;">HOW IT WORKS</div>
-    <h2 style="font-size:clamp(3rem,5vw,5rem);color:#fff;margin-bottom:56px;line-height:0.92;">OUR <span style="color:var(--orange);">PROCESS</span></h2>
+    <h2 style="font-size:clamp(3rem,5vw,5rem);color:#fff;margin-bottom:56px;line-height:0.92;">OUR <span style="background:linear-gradient(135deg,var(--orange),var(--yellow-light),var(--purple-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">PROCESS</span></h2>
 
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;">
 
       <div class="step-card">
         <div class="step-number">01</div>
-        <div style="width:42px;height:42px;background:linear-gradient(135deg,var(--orange),#8a3a08);border-radius:11px;display:flex;align-items:center;justify-content:center;margin:12px 0;box-shadow:0 6px 16px rgba(200,90,20,0.35);">
+        <div style="width:42px;height:42px;background:linear-gradient(135deg,var(--orange),#7c3aed);border-radius:11px;display:flex;align-items:center;justify-content:center;margin:12px 0;box-shadow:0 6px 16px rgba(200,90,20,0.35);">
           <i class="fas fa-comments" style="color:#fff;font-size:0.9rem;"></i>
         </div>
         <h4 style="font-size:1.6rem;color:#fff;margin-bottom:10px;">BRIEF US</h4>
@@ -548,7 +557,7 @@
 
       <div class="step-card">
         <div class="step-number">02</div>
-        <div style="width:42px;height:42px;background:linear-gradient(135deg,var(--orange),#8a3a08);border-radius:11px;display:flex;align-items:center;justify-content:center;margin:12px 0;box-shadow:0 6px 16px rgba(200,90,20,0.35);">
+        <div style="width:42px;height:42px;background:linear-gradient(135deg,#f59e0b,var(--orange));border-radius:11px;display:flex;align-items:center;justify-content:center;margin:12px 0;box-shadow:0 6px 16px rgba(245,158,11,0.3);">
           <i class="fas fa-pencil-ruler" style="color:#fff;font-size:0.9rem;"></i>
         </div>
         <h4 style="font-size:1.6rem;color:#fff;margin-bottom:10px;">DESIGN & PROOF</h4>
@@ -557,7 +566,7 @@
 
       <div class="step-card">
         <div class="step-number">03</div>
-        <div style="width:42px;height:42px;background:linear-gradient(135deg,var(--orange),#8a3a08);border-radius:11px;display:flex;align-items:center;justify-content:center;margin:12px 0;box-shadow:0 6px 16px rgba(200,90,20,0.35);">
+        <div style="width:42px;height:42px;background:linear-gradient(135deg,#7c3aed,#f59e0b);border-radius:11px;display:flex;align-items:center;justify-content:center;margin:12px 0;box-shadow:0 6px 16px rgba(124,58,237,0.3);">
           <i class="fas fa-industry" style="color:#fff;font-size:0.9rem;"></i>
         </div>
         <h4 style="font-size:1.6rem;color:#fff;margin-bottom:10px;">PRODUCTION</h4>
@@ -581,7 +590,7 @@
 <section style="padding:100px 0;background:var(--off-white);">
   <div style="max-width:1320px;margin:auto;padding:0 32px;">
     <div class="section-label">OUR CLIENTS</div>
-    <h2 style="font-size:clamp(2.8rem,4.5vw,4.5rem);line-height:0.92;margin-bottom:52px;color:#0a0a0a;">SERVICES TAILORED <span style="background:linear-gradient(135deg,#c85a14,#8a3a08);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">FOR YOU</span></h2>
+    <h2 style="font-size:clamp(2.8rem,4.5vw,4.5rem);line-height:0.92;margin-bottom:52px;color:#0a0a0a;">SERVICES TAILORED <span style="background:linear-gradient(135deg,#c85a14,#7c3aed,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">FOR YOU</span></h2>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:48px;">
       <div class="glass-light" style="padding:42px;position:relative;overflow:hidden;">
@@ -591,18 +600,18 @@
         <p style="color:#555;font-size:0.98rem;line-height:1.75;margin-bottom:22px;">Trend-driven, pre-designed T-shirts for youth (ages 14–25) who value self-expression and modern fashion. Bold, accessible, and community-inspired.</p>
         <div style="display:flex;gap:8px;flex-wrap:wrap;">
           <span style="background:rgba(200,90,20,0.1);border:1px solid rgba(200,90,20,0.3);color:var(--orange);padding:4px 14px;border-radius:100px;font-size:0.72rem;font-weight:600;">Ages 14–25</span>
-          <span style="background:rgba(200,90,20,0.1);border:1px solid rgba(200,90,20,0.3);color:var(--orange);padding:4px 14px;border-radius:100px;font-size:0.72rem;font-weight:600;">Youth Fashion</span>
+          <span style="background:rgba(124,58,237,0.1);border:1px solid rgba(124,58,237,0.3);color:#7c3aed;padding:4px 14px;border-radius:100px;font-size:0.72rem;font-weight:600;">Youth Fashion</span>
         </div>
       </div>
 
       <div class="glass-light" style="padding:42px;position:relative;overflow:hidden;">
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:6rem;color:rgba(200,90,20,0.08);line-height:1;position:absolute;top:10px;right:20px;">02</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:6rem;color:rgba(124,58,237,0.08);line-height:1;position:absolute;top:10px;right:20px;">02</div>
         <div style="font-family:'Space Mono',monospace;font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--orange);margin-bottom:12px;">Client / 02</div>
         <h3 style="font-size:2.2rem;color:#0a0a0a;margin-bottom:14px;">CORPORATE &<br/>PROFESSIONAL</h3>
         <p style="color:#555;font-size:0.98rem;line-height:1.75;margin-bottom:22px;">Custom apparel for entrepreneurs, working professionals, and creatives (ages 25–46) seeking premium, custom-branded products for their teams, events, and mining operations.</p>
         <div style="display:flex;gap:8px;flex-wrap:wrap;">
           <span style="background:rgba(200,90,20,0.1);border:1px solid rgba(200,90,20,0.3);color:var(--orange);padding:4px 14px;border-radius:100px;font-size:0.72rem;font-weight:600;">Ages 25–46</span>
-          <span style="background:rgba(200,90,20,0.1);border:1px solid rgba(200,90,20,0.3);color:var(--orange);padding:4px 14px;border-radius:100px;font-size:0.72rem;font-weight:600;">Mining Sector</span>
+          <span style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);color:#b45309;padding:4px 14px;border-radius:100px;font-size:0.72rem;font-weight:600;">Mining Sector</span>
         </div>
       </div>
     </div>
@@ -610,21 +619,21 @@
     <!-- quality pillars -->
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
       <div class="pillar-card">
-        <div style="width:48px;height:48px;background:linear-gradient(135deg,var(--orange),#8a3a08);border-radius:13px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;box-shadow:0 6px 16px rgba(200,90,20,0.35);">
+        <div style="width:48px;height:48px;background:linear-gradient(135deg,var(--orange),#7c3aed);border-radius:13px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;box-shadow:0 6px 16px rgba(200,90,20,0.35);">
           <i class="fas fa-medal" style="color:#fff;font-size:1rem;"></i>
         </div>
         <h4 style="font-size:1.6rem;color:#0a0a0a;margin-bottom:10px;">QUALITY ASSURANCE</h4>
         <p style="color:#666;font-size:0.88rem;line-height:1.7;">Highest standards from material selection to final delivery — every single order.</p>
       </div>
       <div class="pillar-card">
-        <div style="width:48px;height:48px;background:linear-gradient(135deg,var(--orange),#8a3a08);border-radius:13px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;box-shadow:0 6px 16px rgba(200,90,20,0.35);">
+        <div style="width:48px;height:48px;background:linear-gradient(135deg,#f59e0b,var(--orange));border-radius:13px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;box-shadow:0 6px 16px rgba(245,158,11,0.3);">
           <i class="fas fa-hand-holding-heart" style="color:#fff;font-size:1rem;"></i>
         </div>
         <h4 style="font-size:1.6rem;color:#0a0a0a;margin-bottom:10px;">ETHICAL PRODUCTION</h4>
         <p style="color:#666;font-size:0.88rem;line-height:1.7;">Responsible sourcing and transparent processes — community first, always.</p>
       </div>
       <div class="pillar-card" style="border-color:rgba(200,90,20,0.3);background:rgba(251,232,214,0.55);">
-        <div style="width:48px;height:48px;background:linear-gradient(135deg,var(--orange),#8a3a08);border-radius:13px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;box-shadow:0 6px 16px rgba(200,90,20,0.35);">
+        <div style="width:48px;height:48px;background:linear-gradient(135deg,#7c3aed,#f59e0b);border-radius:13px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;box-shadow:0 6px 16px rgba(124,58,237,0.3);">
           <i class="fas fa-seedling" style="color:#fff;font-size:1rem;"></i>
         </div>
         <h4 style="font-size:1.6rem;color:#0a0a0a;margin-bottom:10px;">COMMUNITY IMPACT</h4>
@@ -636,23 +645,23 @@
 
 
 <!-- ░░ FOUNDER QUOTE ░░ -->
-<section style="padding:80px 0;background:linear-gradient(160deg,#f8f4f0 0%,#fbe8d6 100%);">
+<section class="about-bg" style="padding:80px 0;">
   <div style="max-width:1320px;margin:auto;padding:0 32px;">
     <div class="quote-wrap">
       <div style="display:grid;grid-template-columns:0.85fr 1.15fr;">
         <div style="position:relative;min-height:420px;">
-          <img src="" alt="Elvis Boom" style="width:100%;height:100%;object-fit:cover;object-position:center top;"/>
+          <img src="assets/founder.jpeg" alt="Elvis Boom" style="width:100%;height:100%;object-fit:cover;object-position:center top;"/>
           <div style="position:absolute;inset:0;background:linear-gradient(90deg,transparent 55%,rgba(30,15,5,0.95));"></div>
           <div style="position:absolute;bottom:24px;left:24px;">
-            <span style="background:linear-gradient(135deg,var(--orange),#8a3a08);color:#fff;font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;padding:5px 14px;border-radius:100px;display:inline-block;">Founder & MD</span>
+            <span style="background:linear-gradient(135deg,var(--orange),#7c3aed);color:#fff;font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;padding:5px 14px;border-radius:100px;display:inline-block;">Founder & MD</span>
           </div>
         </div>
         <div style="padding:52px 48px;display:flex;flex-direction:column;justify-content:center;">
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:5rem;color:rgba(200,90,20,0.18);line-height:1;margin-bottom:-10px;">"</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:5rem;background:linear-gradient(135deg,rgba(200,90,20,0.18),rgba(124,58,237,0.1));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:-10px;">"</div>
           <p style="font-size:1.2rem;color:rgba(255,255,255,0.78);line-height:1.8;font-style:italic;margin-bottom:28px;">Every service we offer — from a single mug to a bulk corporate order — carries our commitment to creativity, reliability, and community impact. We don't just print; we build lasting partnerships.</p>
           <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:22px;">
             <h4 style="font-size:1.8rem;color:#fff;margin-bottom:4px;">ELVIS BOOM</h4>
-            <div style="font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--orange);">Founder & Managing Director, Fortkopi Print</div>
+            <div style="font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.16em;text-transform:uppercase;background:linear-gradient(135deg,var(--orange),var(--purple-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Founder & Managing Director, Fortkopi Print</div>
           </div>
         </div>
       </div>
@@ -663,41 +672,42 @@
 
 <!-- ░░ CTA ░░ -->
 <section id="contact" class="section-dark" style="padding:90px 0;position:relative;overflow:hidden;">
-  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(200,90,20,0.12),transparent 70%);pointer-events:none;"></div>
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(200,90,20,0.12),rgba(124,58,237,0.06) 50%,transparent 70%);pointer-events:none;"></div>
+  <div style="position:absolute;top:30%;left:20%;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(245,158,11,0.05),transparent 70%);pointer-events:none;"></div>
   <div style="max-width:1320px;margin:auto;padding:0 32px;position:relative;z-index:2;text-align:center;">
     <div style="font-family:'Space Mono',monospace;font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange);margin-bottom:16px;display:flex;align-items:center;justify-content:center;gap:10px;"><span style="display:block;width:28px;height:2px;background:var(--orange);"></span>READY TO ORDER?<span style="display:block;width:28px;height:2px;background:var(--orange);"></span></div>
     <h2 style="font-size:clamp(3rem,6vw,6rem);color:#fff;line-height:0.9;margin-bottom:20px;">
-      START YOUR<br/><span style="background:linear-gradient(135deg,#e87030,#c85a14);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">PROJECT</span><br/>TODAY.
+      START YOUR<br/><span style="background:linear-gradient(135deg,#fcd34d,#e87030,#c85a14,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">PROJECT</span><br/>TODAY.
     </h2>
     <p style="color:rgba(255,255,255,0.5);font-size:1rem;max-width:420px;margin:0 auto 36px;line-height:1.75;">From a single custom hoodie to 500 school uniforms — we're ready to make it happen. Get in touch for a free quote.</p>
     <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
       <a href="mailto:hello@fortkopi.co.za" class="btn-primary"><i class="fas fa-envelope"></i> GET A FREE QUOTE</a>
-      <a href="fortkopi-about.html" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:#fff;font-weight:600;padding:12px 28px;border-radius:100px;font-size:0.9rem;border:2px solid rgba(255,255,255,0.25);transition:all 0.3s;text-decoration:none;" onmouseover="this.style.borderColor='var(--orange)';this.style.color='#e87030'" onmouseout="this.style.borderColor='rgba(255,255,255,0.25)';this.style.color='#fff'"><i class="fas fa-user"></i> ABOUT US</a>
+      <a href="about.html" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:#fff;font-weight:600;padding:12px 28px;border-radius:100px;font-size:0.9rem;border:2px solid rgba(255,255,255,0.25);transition:all 0.3s;text-decoration:none;" onmouseover="this.style.borderColor='var(--orange)';this.style.color='#e87030'" onmouseout="this.style.borderColor='rgba(255,255,255,0.25)';this.style.color='#fff'"><i class="fas fa-user"></i> ABOUT US</a>
     </div>
   </div>
 </section>
 
 
 <!-- ░░ FOOTER ░░ -->
-<footer style="background:#000;border-top:2px solid var(--orange);padding:44px 0 28px;">
+<footer style="background:#000;border-top:2px solid transparent;border-image:linear-gradient(90deg,var(--orange),var(--purple),var(--yellow),var(--orange)) 1;padding:44px 0 28px;">
   <div style="max-width:1320px;margin:auto;padding:0 32px;">
     <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;margin-bottom:28px;">
       <div style="display:flex;align-items:center;gap:14px;">
         <div style="width:48px;height:48px;background:linear-gradient(135deg,var(--orange),#8a3a08);border-radius:12px;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(200,90,20,0.4);">
-          <span style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:#fff;">FP</span>
+        <img src="assets/OriginaLogo.jpeg" alt="Fortkopi Logo" style="width:150px;height: 150px;object-fit:contain;">
         </div>
         <div>
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:#fff;letter-spacing:0.05em;">FORTKOPI <span style="color:var(--orange);">PRINT</span></div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:#fff;letter-spacing:0.05em;">FORTKOPI <span style="background:linear-gradient(135deg,var(--orange),var(--purple-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">PRINT</span></div>
           <div style="font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:2px;">Services · 2026 Profile</div>
         </div>
       </div>
       <div style="display:flex;gap:22px;flex-wrap:wrap;">
-        <a href="fortkopi-print.html" style="font-family:'Space Mono',monospace;font-size:0.66rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.35);text-decoration:none;" onmouseover="this.style.color='#e87030'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">Home</a>
-        <a href="fortkopi-about.html" style="font-family:'Space Mono',monospace;font-size:0.66rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.35);text-decoration:none;" onmouseover="this.style.color='#e87030'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">About</a>
-        <a href="#services" style="font-family:'Space Mono',monospace;font-size:0.66rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.35);text-decoration:none;" onmouseover="this.style.color='#e87030'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">Services</a>
+        <a href="index.html" style="font-family:'Space Mono',monospace;font-size:0.66rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.35);text-decoration:none;" onmouseover="this.style.color='#e87030'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">Home</a>
+        <a href="about.html" style="font-family:'Space Mono',monospace;font-size:0.66rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.35);text-decoration:none;" onmouseover="this.style.color='#e87030'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">About</a>
+        <a href="contact.html" style="font-family:'Space Mono',monospace;font-size:0.66rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.35);text-decoration:none;" onmouseover="this.style.color='#e87030'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">Contact</a>
       </div>
     </div>
-    <div class="grad-line" style="opacity:0.35;margin-bottom:22px;"></div>
+    <div class="grad-line" style="opacity:0.5;margin-bottom:22px;"></div>
     <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
       <p style="font-family:'Space Mono',monospace;font-size:0.64rem;color:rgba(255,255,255,0.22);letter-spacing:0.1em;">© 2026 FORTKOPI PRINT. ALL RIGHTS RESERVED.</p>
       <p style="font-size:0.78rem;color:rgba(255,255,255,0.28);">✦ Custom · Sublimation · Embroidery · Bulk</p>
